@@ -1,4 +1,5 @@
 import React from "react";
+import Content from "./Content";
 import styled from "styled-components";
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
           placeholder="테마를 입력하세요"
           onKeyPress={this.handleInputKeyPress}
         ></Input>
+        <Content />
       </Container>
     );
   }
