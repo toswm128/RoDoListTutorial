@@ -5,6 +5,20 @@ class Clock extends React.Component {
   state = {
       date: new Date()
   }
+
+  getDate = () => {
+    this.setState({
+      date: new Date()
+    });
+  };
+
+  componentDidMount() {
+    this.oneMinuteCall = setInterval(() => this.getDate(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.oneMinuteCall);
+  }
   
     render() {
     const { date } = this.state;
@@ -28,9 +42,13 @@ class Clock extends React.Component {
             ? "금요일"
             : "토요일"}</CurDay>
 
-        <CurTime>{date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}
+        <CurTime>
+            {date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}
           &nbsp;:&nbsp;
-          {date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}</CurTime>
+          {date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}
+          &nbsp;:&nbsp;
+          {date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds()}
+          </CurTime>
       </Container>
     );
   }
