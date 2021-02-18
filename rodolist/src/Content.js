@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import Clock from "./Clock";
+import Todo from "./Todo";
 
 const Content = () => (
   <Container>
     <Clock />
+    <Todo />
   </Container>
 );
 
