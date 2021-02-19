@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import TodoList from "./TodoList";
 
 class Todo extends React.Component {
     state = {
@@ -10,8 +11,15 @@ class Todo extends React.Component {
     return (
       <Container>
         <Input placeholder="오늘 할 일" onKeyPress={this.handleInputKeyPress}></Input>
+        <TodoList todoList={this.state.todoList}></TodoList>
       </Container>
     );
+  }
+
+  componentDidMount() {
+    this.setState({
+      todoList: JSON.parse(localStorage.getItem("todoList")) || []
+    });
   }
 
   handleInputKeyPress = event => {
