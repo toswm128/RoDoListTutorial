@@ -3,15 +3,14 @@ import styled from "styled-components";
 import TodoList from "./TodoList";
 
 class Todo extends React.Component {
-    state = {
-        todoList: []
-      };
+  state = {
+    todoList: []
+  };
   render() {
-    console.log(this.state.todoList);
     return (
       <Container>
         <Input placeholder="오늘 할 일" onKeyPress={this.handleInputKeyPress}></Input>
-        <TodoList todoList={this.state.todoList}></TodoList>
+        <TodoList todoList={this.state.todoList} handleClickRemove={this.handleClickRemove}></TodoList>
       </Container>
     );
   }
@@ -35,7 +34,23 @@ class Todo extends React.Component {
       event.target.value = "";
     }
   };
+
+  handleClickRemove = index => {
+  if (window.confirm("목록에서 지우시겠습니까?")) {
+    this.setState(
+      state => ({
+        todoList: [
+          ...state.todoList.slice(0, index),
+          ...state.todoList.slice(index + 1)
+        ]
+      }),
+      () =>
+        localStorage.setItem("todoList", JSON.stringify(this.state.todoList))
+    );
+  }
+};
 }
+
 
 const Container = styled.div`
   margin-top: 44px;
