@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Clock from "./Clock";
-import Todo from "./Todo";
+import Todo from "./ToDoList/Todo";
 
 const Content = () => (
   <Container>

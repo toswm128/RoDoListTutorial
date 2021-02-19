@@ -1,5 +1,5 @@
 import React from "react";
-import Content from "./Content";
+import Content from "./compornt/Content";
 import styled from "styled-components";
 
 class App extends React.Component {
