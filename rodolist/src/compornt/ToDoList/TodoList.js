@@ -3,6 +3,7 @@ import styled from "styled-components";
 import TodoRow from "./TodoRow";
 
 const TodoList = ({ todoList, handleClickRemove }) => (
+  console.log(todoList),
   <Container>
     {todoList.map((todo, index) => (
       <TodoRow

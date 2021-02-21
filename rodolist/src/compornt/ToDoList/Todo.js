@@ -25,11 +25,14 @@ class Todo extends React.Component {
     const {
       target: { value }
     } = event;
+    console.log("a")
+    
     if (event.key === "Enter") {
       this.setState(
         state => ({ todoList: [...state.todoList, value] }),
         () =>
-          localStorage.setItem("todoList", JSON.stringify(this.state.todoList))
+          localStorage.setItem("todoList", JSON.stringify(this.state.todoList)),
+          console.log(this.state.todoList)
       );
       event.target.value = "";
     }
